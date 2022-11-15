@@ -1,10 +1,10 @@
-import PEOPLES.ANNA
+import PEOPLE.ANNA
 
 
 class USERS_SIGNAL:
     def __init__(self):
         self.signal = None
-        self.annas_pos = PEOPLES.ANNA.Anna()
+        self.annas_pos = PEOPLE.ANNA.Anna()
 
     def give_signals(self, signal):
         all_sides = ['left', 'right', 'up', 'down']

@@ -1,7 +1,7 @@
 import pygame
 import DATAS.location.description_location_1
 import DATAS.const
-import PEOPLES.ANNA
+import PEOPLE.ANNA
 
 
 class CHECKING:
@@ -10,7 +10,7 @@ class CHECKING:
         self.height, self.width = DATAS.const.HEIGHT, DATAS.const.WIDTH
         self.x, self.y = pos_user[0], pos_user[1]
 
-        self.data_location, self.data_anna = DATAS.location.description_location_1.LOCATION_1(), PEOPLES.ANNA.Anna()
+        self.data_location, self.data_anna = DATAS.location.description_location_1.LOCATION_1(), PEOPLE.ANNA.Anna()
 
     def result(self):
         return self.border() and self.houses()
