@@ -33,6 +33,8 @@ def main():
                 # ESC key pressed
                 pygame.quit()
                 sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                accept_signals_user.give_signals(pygame.mouse.get_pos())
 
         #################
         # MOVING GAME

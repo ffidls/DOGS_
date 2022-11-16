@@ -14,6 +14,7 @@ class BUTTONS:
         self.width, self.height = DATAS.const.WIDTH_BUTTON, DATAS.const.HEIGHT_BUTTON
         self.start_pos_lst = DATAS.location.description_location_1.start_pos_door()
         self.safe_new_inf = DATAS.write_new_datas
+        self.name_houses = DATAS.location.description_location_1.pos_people_house()
 
     def entity_button(self, pos):
         return pygame.Rect(pos[0], pos[1], self.width, self.height)
@@ -26,4 +27,5 @@ class BUTTONS:
                 pos_contact_button = possible_pos
                 break
 
-        self.safe_new_inf.new_inf_for_button(pos_contact_button)
+        name_house = self.name_houses[pos_contact_button] if pos_contact_button is not None else None
+        self.safe_new_inf.new_inf_for_button(pos_contact_button, name_house)
