@@ -4,7 +4,8 @@ def locations(count=None):
 
 def inf_for_button():
     file = open('DATAS/INF_BUTTONS', 'r').read().split()
-    return bool(file[0]), (int(file[1]), int(file[2]))
+    str_inf = False if file[0] == 'False' else True
+    return str_inf, (int(file[1]), int(file[2]))
 
 
 class DATAS:

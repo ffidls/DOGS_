@@ -2,6 +2,7 @@ import pygame
 import DATAS.const
 import DATAS.location.description_location_1
 import DATAS.write_new_datas
+import DATAS.get_datas
 
 
 def checking_contact(rect_user, rect_button):
@@ -15,13 +16,14 @@ class BUTTONS:
         self.safe_new_inf = DATAS.write_new_datas
 
     def entity_button(self, pos):
-        return pos[1], pos[2], self.width, self.height
+        return pygame.Rect(pos[0], pos[1], self.width, self.height)
 
     def find_contact_buttons(self, entity_user):
         pos_contact_button = None
         for possible_pos in self.start_pos_lst:
-            pos_contact_button = possible_pos if checking_contact(entity_user, possible_pos) else None
+            rect_button = self.entity_button(possible_pos)
+            if checking_contact(entity_user, rect_button):
+                pos_contact_button = possible_pos
+                break
 
-        if pos_contact_button is not None:
-            self.safe_new_inf.new_inf_for_button(pos_contact_button)
-        return pos_contact_button
+        self.safe_new_inf.new_inf_for_button(pos_contact_button)

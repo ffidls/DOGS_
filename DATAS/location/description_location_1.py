@@ -3,7 +3,7 @@ import DATAS.const
 
 
 def start_pos_door():
-    return [(171, 356), (11, 349)]
+    return [(189, 349), (18, 349)]
 
 
 class LOCATION_1:
