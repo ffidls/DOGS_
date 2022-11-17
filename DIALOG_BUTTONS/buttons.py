@@ -16,7 +16,9 @@ class BUTTONS:
         self.safe_new_inf = DATAS.write_new_datas
         self.name_houses = DATAS.location.description_location_1.pos_people_house()
 
-    def entity_button(self, pos):
+    def entity_button(self, pos, for_contact=False):
+        if for_contact:
+            self.width, self.height = DATAS.const.AREA_WIDTH, DATAS.const.AREA_HEIGHT
         return pygame.Rect(pos[0], pos[1], self.width, self.height)
 
     def find_contact_buttons(self, entity_user):

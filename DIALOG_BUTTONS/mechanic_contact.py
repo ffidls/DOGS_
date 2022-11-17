@@ -4,9 +4,7 @@ import DATAS.get_datas, DATAS.const
 
 class SETTING_CONTACT:
     def __init__(self):
-        self.setting_buttons = DIALOG_BUTTONS.buttons.BUTTONS()
         self.dialogs = DIALOG_BUTTONS.dialogs.DIALOGS()
-
         self.pos_draw = DATAS.const.POS_DOORS
 
     def distribution_mouse(self):  # for mouse

@@ -12,7 +12,7 @@ class ASSEMBLING:
         pos = self.inf_pos_button.setting_for_draw_button()
         SCREEN.blit(self.img_button, (pos[0], pos[1]))
 
-    def draw_dialog(self):
+    def draw_dialog(self, text):
         pass
 
     def result(self, SCREEN):
