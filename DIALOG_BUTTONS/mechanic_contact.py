@@ -16,4 +16,10 @@ class SETTING_CONTACT:
 
     def for_dialogs(self, pos):
         check_contact_button = DATAS.get_datas.inf_for_button()[0]
-        self.dialogs.get_pos(pos) if check_contact_button else None
+        self.dialogs.setting(pos) if check_contact_button else None
+
+    def datas_from_draw_dialog(self):
+        name_dialog, count_phrase = DATAS.get_datas.get_data_dialog()
+        if name_dialog != 'None':
+            return DATAS.get_datas.get_dialog_phrase(name_dialog, count_phrase)
+        return None

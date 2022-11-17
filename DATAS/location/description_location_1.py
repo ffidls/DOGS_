@@ -7,7 +7,7 @@ def start_pos_door():
 
 
 def pos_people_house():
-    return {(189, 349): 'Anna', (18, 349): 'Neighbor'}
+    return {(189, 349): 'anna_house', (18, 349): 'neighbor_house'}
 
 
 class LOCATION_1:

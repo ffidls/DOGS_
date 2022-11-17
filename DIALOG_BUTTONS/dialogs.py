@@ -1,7 +1,7 @@
 import pygame
 import DIALOG_BUTTONS.mechanic_contact
 import DIALOG_BUTTONS.buttons
-import DATAS, DATAS.const, DATAS.write_new_datas
+import DATAS, DATAS.const, DATAS.write_new_datas, DATAS.get_datas
 
 
 def pos_draw_button():
@@ -16,7 +16,7 @@ class DIALOGS:
     def get_pos(self, mouse_pos):
         if self.checking_contact_with_button(mouse_pos):
             name_dialog = DATAS.get_datas.inf_for_button()[2]
-            DATAS.write_new_datas.new_inf_dialog(name_dialog, count=0)
+            DATAS.write_new_datas.new_inf_dialog(name_dialog, count=1)
 
     def checking_contact_with_button(self, mouse_pos):
         button = self.create_entity_button()
@@ -26,5 +26,13 @@ class DIALOGS:
         pos_entity_button = pos_draw_button()
         return self.setting_button.entity_button(pos_entity_button, for_contact=True)
 
-    def setting(self):
-        pass
+    def setting(self, mouse_pos):
+        datas = DATAS.get_datas.get_data_dialog()
+        name_dialog, count_phrase = datas[0], int(datas[1])
+
+        if name_dialog != 'None':
+            all_phrase = int(DATAS.get_datas.get_dialog_phrase(name_dialog, 0)[0])
+            new_datas = [name_dialog, count_phrase + 1] if all_phrase > count_phrase else [None, 0]
+            DATAS.write_new_datas.new_inf_dialog(new_datas[0], new_datas[1])
+        else:
+            self.get_pos(mouse_pos)
