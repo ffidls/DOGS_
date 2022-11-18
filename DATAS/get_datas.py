@@ -10,6 +10,11 @@ def img_button():
     return 'DATAS/DATAS_CONTACT/button.png'
 
 
+def img_human(name):
+    name_fail = "Anna" if name == 'A' else 'Kira'
+    return f'DATAS/DATAS_CONTACT/{name_fail}.png'
+
+
 def inf_for_button():
     file = open('DATAS/INF_BUTTONS', 'r').read().split()
     str_inf = False if file[0] == 'False' else True

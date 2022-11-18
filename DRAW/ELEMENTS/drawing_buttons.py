@@ -18,7 +18,15 @@ class ASSEMBLING:
         datas_dialog = self.inf_button_dialog.datas_from_draw_dialog()
         if datas_dialog is not None:
             human, phrase = datas_dialog[1], datas_dialog[2]
+            human_png = DATAS.get_datas.img_human(human)
+            img = pygame.image.load(human_png)
+
+            SCREEN.blit(img, DATAS.const.POS_IMG_FOR_DIALOG)
             SCREEN.blit(self.window_dialog, DATAS.const.POS_DIALOG_WINDOW)
+
+            my_font = pygame.font.SysFont('Pixel Times.ttf', 30)
+            # text_surface = my_font.render('Щвф', False, (0, 0, 0))
+            # SCREEN.blit(text_surface, (0, 0))
 
     def result(self, SCREEN):
         contact_with_button = DATAS.get_datas.inf_for_button()[0]
