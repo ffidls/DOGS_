@@ -5,14 +5,14 @@ import DATAS.location
 pygame.init()
 FPS = 30
 fpsClock = pygame.time.Clock()
-width = 500
-height = 500
+width = 512
+height = 512
 mainSurface = pygame.display.set_mode((width, height), 0, 32)
 pygame.display.set_caption('Keyb moves')
-background = pygame.image.load('DATAS/location/location1.png')
-sprite = pygame.image.load('DATAS/location/location1.png')
+# background = pygame.image.load('DATAS/location2/location2.png')
+sprite = pygame.image.load('DATAS/location2/location2.png')
 # Place image to the center of mainSurface
-image_pos = ((mainSurface.get_width() - sprite.get_width()) / 2, (mainSurface.get_height() - sprite.get_height()) / 2)
+image_pos = (0, 0)
 doMove = False
 # game loop
 while True:
@@ -31,5 +31,5 @@ while True:
         if event.type == pygame.MOUSEBUTTONDOWN:
             print(event.pos)
 
-    mainSurface.blit(sprite, image_pos)
+    mainSurface.blit(sprite, (0, 0))
     pygame.display.update()

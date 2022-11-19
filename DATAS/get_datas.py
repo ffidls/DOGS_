@@ -1,5 +1,5 @@
 def locations(count=None):
-    return 'DATAS/location/location1.png'
+    return 'DATAS/location2/location_2.png'
 
 
 def window_dialog():
