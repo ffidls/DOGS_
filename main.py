@@ -17,8 +17,6 @@ doMove = False
 # game loop
 while True:
     fpsClock.tick(FPS)  # frame rate
-    mainSurface.blit(background, (0, 0))
-
     # get all events from the queue
     for event in pygame.event.get():
         # loop events queue

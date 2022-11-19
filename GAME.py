@@ -17,7 +17,6 @@ def main():
 
     draw_game = DRAW.all_drawing.DRAW_MOVING_AND_FON(SCREEN)
     accept_signals_user = MECHANICA.signal_distribution.USERS_SIGNAL()
-
     ###################
 
     while True:

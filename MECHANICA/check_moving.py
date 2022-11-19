@@ -21,6 +21,3 @@ class CHECKING:
     def houses(self):  # for locations
         location, anna = self.data_location.entity(), self.data_anna.entity_anna(True, (self.x, self.y))
         return not pygame.Rect.colliderect(location, anna)
-
-    def contact_with_dialog(self):
-        pass
