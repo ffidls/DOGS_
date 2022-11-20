@@ -22,7 +22,7 @@ class LOCATIONS:
         num_location = get_count_location()
         pos_border = self.ger_border_now_location(num_location)
 
-        if pos_border[0] <= pos_user[1] and pos_border[1] <= pos_user[0]:
+        if pos_border[0] <= pos_user[1] and pos_border[1] >= pos_user[0]:
             DATAS.write_new_datas.new_num_location(num_location + 1)
             self.Anna.new_pos_for_new_location()
 

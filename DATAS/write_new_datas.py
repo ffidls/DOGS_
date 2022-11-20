@@ -13,5 +13,5 @@ def new_inf_dialog(name_dialog, count):
 
 def new_num_location(num):
     file = open('DATAS/DATAS_LOCATIONS/count_now_location', 'w')
-    print(num)
+    print(num, file=file)
     file.close()

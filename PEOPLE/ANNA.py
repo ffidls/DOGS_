@@ -25,5 +25,5 @@ class Anna:
 
     def new_pos_for_new_location(self):
         old_pos = self.pos_anna()
-        new_pos = old_pos[0], DATAS.const.NEW_Y_LOCATION_2
+        new_pos = DATAS.const.NEW_Y_LOCATION_2, old_pos[0] * (-1)
         self.datas_for_pos.new_pos_anna(new_pos)
