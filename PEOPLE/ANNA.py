@@ -1,5 +1,6 @@
 import DATAS.possions
 import MECHANICA.moving
+import DATAS.const
 
 
 class Anna:
@@ -21,3 +22,8 @@ class Anna:
     def entity_anna(self, possible=False, possible_pos=None):
         pos = self.pos_anna() if not possible else possible_pos
         return pos[1], pos[0], 40, 40
+
+    def new_pos_for_new_location(self):
+        old_pos = self.pos_anna()
+        new_pos = old_pos[0], DATAS.const.NEW_Y_LOCATION_2
+        self.datas_for_pos.new_pos_anna(new_pos)

@@ -9,3 +9,9 @@ def new_inf_dialog(name_dialog, count):
     file = open('DATAS/INF_DIALOG', 'w')
     print(f"{name_dialog} {count}", file=file)
     file.close()
+
+
+def new_num_location(num):
+    file = open('DATAS/DATAS_LOCATIONS/count_now_location', 'w')
+    print(num)
+    file.close()

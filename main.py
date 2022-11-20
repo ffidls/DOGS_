@@ -1,6 +1,6 @@
 import pygame, sys, time
 from pygame.locals import *
-import DATAS.location
+import DATAS.DATAS_LOCATIONS.location2
 
 pygame.init()
 FPS = 30
@@ -10,7 +10,7 @@ height = 512
 mainSurface = pygame.display.set_mode((width, height), 0, 32)
 pygame.display.set_caption('Keyb moves')
 # background = pygame.image.load('DATAS/location2/location2.png')
-sprite = pygame.image.load('DATAS/location2/location2.png')
+sprite = pygame.image.load('DATAS/DATAS_LOCATIONS/location2/location2.png')
 # Place image to the center of mainSurface
 image_pos = (0, 0)
 doMove = False

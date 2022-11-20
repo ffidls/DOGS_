@@ -1,6 +1,6 @@
 import pygame
 import DATAS.const
-import DATAS.location.description_location_1
+import MECHANICA.Change_locations
 import DATAS.write_new_datas
 import DATAS.get_datas
 
@@ -12,9 +12,10 @@ def checking_contact(rect_user, rect_button):
 class BUTTONS:
     def __init__(self):
         self.width, self.height = DATAS.const.WIDTH_BUTTON, DATAS.const.HEIGHT_BUTTON
-        self.start_pos_lst = DATAS.location.description_location_1.start_pos_door()
         self.safe_new_inf = DATAS.write_new_datas
-        self.name_houses = DATAS.location.description_location_1.pos_people_house()
+        self.action_for_locations = MECHANICA.Change_locations.LOCATIONS()
+
+        self.start_pos_lst, self.name_houses = self.action_for_locations.inf_location()
 
     def entity_button(self, pos, for_contact=False):
         if for_contact:

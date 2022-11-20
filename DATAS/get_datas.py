@@ -1,5 +1,10 @@
-def locations(count=None):
-    return 'DATAS/location2/location_2.png'
+def locations(count):
+    return f'DATAS/DATAS_LOCATIONS/location{count}/location{count}.png'
+
+
+def get_count_location():
+    datas = open('DATAS/DATAS_LOCATIONS/count_now_location', 'r').read()
+    return int(datas)
 
 
 def window_dialog():
