@@ -1,5 +1,5 @@
 import DATAS.possions
-import MECHANICA.moving
+import MECHANICA.moving, MECHANICA.Change_locations
 import DATAS.const
 
 
@@ -8,13 +8,21 @@ class Anna:
         self.speed = 8
         self.datas_for_pos = DATAS.possions
         self.get_new_pos = MECHANICA.moving.MOVING()
+        self.check_for_another_location = MECHANICA.Change_locations.LOCATIONS()
 
     def setting_movement(self, signal):
         old_pos = self.pos_anna()
         possible_pos = self.get_new_pos.new_possions_user(signal, old_pos)
+        check_location = self.new_pos_for_new_location(old_pos)
 
-        new_pos = possible_pos if possible_pos is not None else old_pos
-        self.datas_for_pos.new_pos_anna(new_pos)
+        if check_location is not None:
+            pos = check_location
+        elif possible_pos is not None:
+            pos = possible_pos
+        else:
+            pos = old_pos
+
+        self.datas_for_pos.new_pos_anna(pos)
 
     def pos_anna(self):
         return self.datas_for_pos.give_pos_anna()
@@ -23,7 +31,6 @@ class Anna:
         pos = self.pos_anna() if not possible else possible_pos
         return pos[1], pos[0], 40, 40
 
-    def new_pos_for_new_location(self):
-        old_pos = self.pos_anna()
-        new_pos = DATAS.const.NEW_Y_LOCATION_2, old_pos[0] * (-1)
-        self.datas_for_pos.new_pos_anna(new_pos)
+    def new_pos_for_new_location(self, pos):
+        return self.check_for_another_location.check_border(pos)
+

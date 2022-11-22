@@ -16,7 +16,7 @@ class MOVING:
         else:
             new_pos = (pos[0] + self.speed, pos[1])
 
-        return self.get_result(new_pos)
+        return new_pos if self.get_result(new_pos) else None
 
     def new_pos_dogs(self):  # for ii dogs
         pass

@@ -1,7 +1,6 @@
 import DATAS.DATAS_LOCATIONS.location1.description_location_1
 import DATAS.DATAS_LOCATIONS.location2.description_location_2
 import DATAS.get_datas, DATAS.write_new_datas
-import PEOPLE.ANNA
 
 
 def get_count_location():
@@ -13,27 +12,40 @@ class LOCATIONS:
         self.all_datas = None
         self.now_location = 1
 
-        self.datas_location_1 = DATAS.DATAS_LOCATIONS.location1.description_location_1
-        self.datas_location_2 = DATAS.DATAS_LOCATIONS.location2.description_location_2
-
-        self.Anna = PEOPLE.ANNA.Anna()
+        self.datas_location_1 = DATAS.DATAS_LOCATIONS.location1.description_location_1.LOCATION_1()
+        self.datas_location_2 = DATAS.DATAS_LOCATIONS.location2.description_location_2.LOCATION_2()
 
     def check_border(self, pos_user):
-        num_location = get_count_location()
-        pos_border = self.ger_border_now_location(num_location)
+        num_location, new_pos = get_count_location(), None
+        if num_location == 1:
+            new_num_location, new_pos = self.datas_location_1.checking_border(pos_user)
+        elif num_location == 2:
+            new_num_location, new_pos = self.datas_location_2.checking_borders(pos_user)
+        else:
+            new_num_location = None
 
-        if pos_border[0] <= pos_user[1] and pos_border[1] >= pos_user[0]:
-            DATAS.write_new_datas.new_num_location(num_location + 1)
-            self.Anna.new_pos_for_new_location()
+        if new_num_location is not None:
+            DATAS.write_new_datas.new_num_location(new_num_location)
+            return new_pos
 
-    def ger_border_now_location(self, num_location):
-        return self.datas_location_1.pos_border_location_2() if num_location == 1 else None
+        return None
 
-    def inf_location(self):
+    def inf_location(self, type_inf):
         num = get_count_location()
-        return self.datas_location_1.start_pos_door(), self.datas_location_1.pos_people_house() if num == 1 else None
+        return self.entity_location(num) if type_inf == 'entity' else self.houses_location(num)
 
-    def entity_location(self):
-        num = get_count_location()
-        loc1, loc2 = self.datas_location_1.LOCATION_1(), self.datas_location_2.LOCATION_2()
-        return loc1.entity_location if num == 1 else loc2.entity_location
+    def entity_location(self, num_location):
+        if num_location == 1:
+            return self.datas_location_1.entity()
+        elif num_location == 2:
+            return self.datas_location_2.entity()
+        # else for 3 location
+
+    def houses_location(self, num):
+        inf_location1 = DATAS.DATAS_LOCATIONS.location1.description_location_1.get_all_inf_location()
+        inf_location2 = DATAS.DATAS_LOCATIONS.location2.description_location_2.get_all_inf_location()
+        if num == 1:
+            return inf_location1[0], inf_location1[1]
+        elif num == 2:
+            return inf_location2[0], inf_location2[1]
+        # else location 3
