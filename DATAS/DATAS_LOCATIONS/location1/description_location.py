@@ -17,18 +17,16 @@ def get_all_inf():
 class LOCATION:
     def __init__(self):
         self.width, self.height = DATAS.const.WIDTH_LOCATION_1, DATAS.const.HEIGHT_LOCATION_1
-        self.pos_border = DATAS.const.BORDER_NEXT
+        self.pos_border_next = DATAS.const.BORDER_NEXT
 
         self.entity_location = pygame.Rect((0, 0, self.width, self.height))
 
     def entity(self):
         return [self.entity_location]
 
-    def checking_border(self, entity_Anna):
+    def checking_border(self, pos_user):
         next_num_location, new_pos_user = 2, DATAS.const.NEW_POC_NEXT_LOCATION
-        entity_border_next = pygame.Rect((self.pos_border[0], self.pos_border[1],
-                                          DATAS.const.BORDER_HEIGHT, DATAS.const.BORDER_WIDTH))
-        entity_user = pygame.Rect(entity_Anna)
-        if pygame.Rect.colliderect(entity_border_next, entity_user):
-            return next_num_location, new_pos_user
+
+        if pos_user[1] >= self.pos_border_next[0] and pos_user[0] <= self.pos_border_next[1]:
+            return next_num_location, (new_pos_user, pos_user[1])
         return None, None

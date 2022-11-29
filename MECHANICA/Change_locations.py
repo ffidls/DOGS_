@@ -26,9 +26,9 @@ class LOCATIONS:
         self.all_datas = None
         self.now_location = 1
 
-    def check_border(self, entity_user):
+    def check_border(self, pos_user):
         user_location = get_datas_location(type_depth='class')
-        num_location, new_pos = user_location.checking_border(entity_user)
+        num_location, new_pos = user_location.checking_border(pos_user)
 
         if num_location is not None:
             DATAS.write_new_datas.new_num_location(num_location)
