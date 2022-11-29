@@ -1,6 +1,6 @@
 import pygame, sys, time
 from pygame.locals import *
-import DATAS.DATAS_LOCATIONS.location2
+
 
 pygame.init()
 FPS = 30
