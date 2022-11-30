@@ -1,5 +1,6 @@
 import DATAS.DATAS_LOCATIONS.location1.description_location
 import DATAS.DATAS_LOCATIONS.location2.description_location
+import DATAS.DATAS_LOCATIONS.location3.description_location
 import DATAS.get_datas, DATAS.write_new_datas
 
 
@@ -11,8 +12,10 @@ def get_datas_location(type_depth):
     num = get_count_location()
     if num == 1:
         user_location = DATAS.DATAS_LOCATIONS.location1.description_location
-    else:  # elif num == 2:
+    elif num == 2:
         user_location = DATAS.DATAS_LOCATIONS.location2.description_location
+    else:
+        user_location = DATAS.DATAS_LOCATIONS.location3.description_location
     # else user_location = location3
 
     if type_depth == 'class':

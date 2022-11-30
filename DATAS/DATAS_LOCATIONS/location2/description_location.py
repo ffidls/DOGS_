@@ -28,10 +28,10 @@ class LOCATION:  # 2 LOCATION
         return [self.entity_location]
 
     def checking_border(self, pos_user):
-        if pos_user[0] >= self.pos_border_next[0] and pos_user[1] == self.pos_border_next[1]:
+        if pos_user[1] >= self.pos_border_next[0] and pos_user[0] <= self.pos_border_next[1]:
             next_num_location, new_pos_user = 3, (self.new_pos_next, pos_user[1])
             return next_num_location, new_pos_user
-        elif pos_user[1] >= self.pos_border_ago[0] and pos_user[0] == self.pos_border_ago[1]:
+        elif pos_user[1] >= self.pos_border_ago[0] and pos_user[0] >= self.pos_border_ago[1]:
             next_num_location, new_pos_user = 1, (self.new_pos_ago, pos_user[1])
             return next_num_location, new_pos_user
 
