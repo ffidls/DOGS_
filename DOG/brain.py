@@ -4,6 +4,7 @@ import DATAS.const
 import DOG.description_dogs
 import DATAS.possions
 import MECHANICA.Change_locations
+import DOG.move_dog
 
 
 def checking_contact(entity_object, entity_dog):
@@ -22,6 +23,7 @@ def get_pos_zona(side):  # !!!
         start_pos_zona = (y - size_zon - 10, x - size_zon // 2 - 5)
     else:
         start_pos_zona = (y - size_zon // 2 + 50, x - size_zon // 2 - 5)
+
     return start_pos_zona
 
 
@@ -43,26 +45,30 @@ class II:
         self.all_const = DATAS.const
         self.miki = DOG.description_dogs.DOG()
 
-        self.get_signal()
+        self.sorting_move()
 
-    def get_signal(self):
-        DATAS.possions.new_pos_zona(get_pos_zona(self.side))
+    def sorting_move(self):
+        entity_zona, pos_zona = self.create_entity_zona()
+        entity_dog = self.miki.entity()
+        if checking_contact(entity_zona, entity_dog):
+            type_move = 'place'
+            need_pos = self.get_pos_places(entity_dog)
+        else:
+            type_move = 'zona'
+            need_pos = pos_zona
+        DOG.move_dog.MOVE(type_move, need_pos)
+
+        # DATAS.possions.new_pos_zona(get_pos_zona(self.side))
         # self.get_pos_places(self.data_user.entity_anna())
 
     def find_special_place(self): pass
 
     def change_zona(self): pass
 
-    def sort_move_dogs(self):
-        # добавить режимы
-        entity_dog, entity_zona = self.miki.entity(), self.create_entity_zona()
-        if checking_contact(entity_zona, entity_dog):
-            pass
-
     def create_entity_zona(self):
         size_zona = self.all_const.SIZE_ZONE
         start_pos_zona = get_pos_zona(self.side)
-        return pygame.Rect(start_pos_zona[0], start_pos_zona[1], size_zona, size_zona)
+        return pygame.Rect(start_pos_zona[0], start_pos_zona[1], size_zona, size_zona), start_pos_zona
 
     def get_pos_places(self, entity_dog):
         general_pos, private_pos = MECHANICA.Change_locations.get_special_place()
@@ -71,4 +77,5 @@ class II:
         find_pos = find_contact_place(general_pos, entity_dog, radius)
         if find_pos is None and private_pos is not None:
             find_pos = find_contact_place(private_pos, entity_dog, radius)
-        print(find_pos)
+
+        return find_pos
