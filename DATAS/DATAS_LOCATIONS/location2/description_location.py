@@ -14,6 +14,10 @@ def get_all_inf():
     return start_pos_door(), pos_people_house()
 
 
+def private_place():
+    return None
+
+
 class LOCATION:  # 2 LOCATION
     def __init__(self):
         self.width, self.height = DATAS.const.WIDTH_LOCATION_2, DATAS.const.HEIGHT_LOCATION_2

@@ -14,6 +14,6 @@ class DRAW_MOVING_AND_FON:
 
     def processor(self):
         self.fon_screen.draw_fon(self.screen)
+        self.dogs.miki(self.screen)
         self.people.anna(self.screen)
         self.buttons.result(self.screen)
-        self.dogs.miki(self.screen)

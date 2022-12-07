@@ -2,6 +2,7 @@ import DATAS.DATAS_LOCATIONS.location1.description_location
 import DATAS.DATAS_LOCATIONS.location2.description_location
 import DATAS.DATAS_LOCATIONS.location3.description_location
 import DATAS.get_datas, DATAS.write_new_datas
+import DATAS.const
 
 
 def get_count_location():
@@ -24,10 +25,17 @@ def get_datas_location(type_depth):
         return user_location
 
 
+def get_special_place():
+    general_pos = DATAS.const.GENERAL_PLACE
+    private_place = get_datas_location('fail').private_place()
+    return general_pos, private_place
+
+
 class LOCATIONS:
     def __init__(self):
         self.all_datas = None
         self.now_location = 1
+        self.all_const = DATAS.const
 
     def check_border(self, pos_user):
         user_location = get_datas_location(type_depth='class')

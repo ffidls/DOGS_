@@ -10,4 +10,4 @@ class DOG:
 
     def entity(self):
         pos = self.pos_miki()
-        return pos[1], pos[0], 50, 100
+        return pos[1], pos[0], 20, 20
