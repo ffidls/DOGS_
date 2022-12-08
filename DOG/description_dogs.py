@@ -1,4 +1,5 @@
 import DATAS.possions
+import pygame
 
 
 class DOG:
@@ -10,4 +11,4 @@ class DOG:
 
     def entity(self):
         pos = self.pos_miki()
-        return pos[1], pos[0], 20, 20
+        return pygame.Rect(pos[0], pos[1], 20, 20)
