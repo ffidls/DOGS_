@@ -2,7 +2,7 @@ import DOG.description_dogs
 import DATAS.const
 
 
-class MOVE:
+class MECHANIC_MOVE:
     def __init__(self, type_move, need_pos):
         self.miki = DOG.description_dogs.DOG()
         pos_dog = self.miki.pos_miki()

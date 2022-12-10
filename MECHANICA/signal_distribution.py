@@ -1,6 +1,6 @@
 import PEOPLE.ANNA
 import DIALOG_BUTTONS.buttons, DIALOG_BUTTONS.mechanic_contact
-import DOG.brain
+import DOG.brain, DOG.independent_move
 
 
 class USERS_SIGNAL:
@@ -9,15 +9,21 @@ class USERS_SIGNAL:
         self.buttons = DIALOG_BUTTONS.buttons.BUTTONS()
         self.dialog = DIALOG_BUTTONS.mechanic_contact.SETTING_CONTACT()
 
-    def give_signals(self, signal):
+    def give_signals(self, signal, absence=False):
         all_sides = ['left', 'right', 'up', 'down']
 
-        self.sides(signal) if signal in all_sides else self.mouse(signal)
+        if absence:
+            self.sides(signal) if signal in all_sides else self.mouse(signal)
+        else:
+            self.free_move()
 
     def sides(self, signal):
         self.annas_pos.setting_movement(signal)
         self.buttons.find_contact_buttons(self.annas_pos.entity_anna())
-        DOG.brain.II(signal)
+        DOG.brain.MOVE(signal)
 
     def mouse(self, pos):  # for button
         self.dialog.for_dialogs(pos)
+
+    def free_move(self):
+        DOG.independent_move.INDEPENDENCE_MOVE()

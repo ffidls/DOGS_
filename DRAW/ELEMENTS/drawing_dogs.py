@@ -9,9 +9,9 @@ class MOVING_DOG:  # сложность в анимации
         self.datas_Miki = DOG.description_dogs.DOG()
 
     def miki(self, screen):  # creating animation
-        start_pos_zona = DATAS.possions.give_pos_zona()
+        '''        start_pos_zona = DATAS.possions.give_pos_zona()
         entity_zona = pygame.Rect(start_pos_zona[1], start_pos_zona[0], 150, 150)
-        pygame.draw.rect(screen, (112, 15, 105), entity_zona)
+        pygame.draw.rect(screen, (112, 15, 105), entity_zona)'''
 
         pos = DATAS.possions.give_pos_miki()
         entity_miki = pygame.Rect(pos[1], pos[0], 20, 20)

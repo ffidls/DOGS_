@@ -49,7 +49,8 @@ def main():
         if keys[pygame.K_DOWN]:
             side = 'down'
 
-        accept_signals_user.give_signals(side) if side is not None else None
+        accept_signals_user.give_signals(side) if side is not None \
+            else accept_signals_user.give_signals(side, absence=True)
         #################
 
         draw_game.processor()
