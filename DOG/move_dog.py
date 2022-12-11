@@ -32,11 +32,17 @@ class MECHANIC_MOVE:
         return missing_y, missing_x
 
     def missing_pos_place(self):
+        if self.x_dog == self.x_need and self.y_dog == self.y_need:
+            return 0, 0
+
         missing_x = self.x_dog - self.x_need if self.x_dog >= self.x_need else self.x_need - self.x_dog
         missing_y = self.y_dog - self.y_need if self.y_dog >= self.y_need else self.y_need - self.y_dog
         return missing_y, missing_x
 
     def final_choice(self):
+        if self.missing_pos == (0, 0):
+            return None
+
         if abs(self.missing_pos[0]) >= abs(self.missing_pos[1]):
             result = (self.y_dog - self.speed, self.x_dog) if self.missing_pos[0] >= 0 \
                 else (self.y_dog + self.speed, self.x_dog)

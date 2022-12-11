@@ -36,7 +36,7 @@ def get_dialog_phrase(name_dialog, count_phrase):
 
 def get_condition_dog():
     file = open(f'DATAS/DATAS_DOGS/INF_CONDITION', 'r').read().split('@')
-    return file[0]
+    return file[0], file[1]
 
 
 def get_data_dialog():
