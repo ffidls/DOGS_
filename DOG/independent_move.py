@@ -4,6 +4,7 @@ import DATAS.write_new_datas, DATAS.get_datas
 import MECHANICA.Change_locations
 import DOG.move_dog
 import DATAS.possions
+import DATAS.const
 
 
 def work_with_condition(type_work, new_condition=None, new_datas=None):
@@ -38,6 +39,9 @@ class INDEPENDENCE_MOVE:
     def __init__(self):
         self.all_condition = ['choice_place', 'search_place', 'emotions_from place']
         self.recording_new_pos = DATAS.possions
+        self.all_const = DATAS.const
+
+        self.sorting_condition()
 
     def get_pos_places(self, entity_dog):
         """general_pos, private_pos = MECHANICA.Change_locations.get_special_place()
@@ -60,16 +64,30 @@ class INDEPENDENCE_MOVE:
             work_with_condition(type_work='new_condition', new_condition='search_place', new_datas=next_place_dog)
 
         elif now_condition == 'search_place':
-            find_place_pos = now_condition[1]
-            mechanic_move = DOG.move_dog.MECHANIC_MOVE(type_move='place', need_pos=find_place_pos)
+            find_place_pos = all_data_condition[1].split()
+            mechanic_move = DOG.move_dog.MECHANIC_MOVE(type_move='place',
+                                                       need_pos=(int(find_place_pos[0]), int(find_place_pos[1])))
             new_pos = mechanic_move.result
             if new_pos is not None:
                 self.write_new_data(mechanic_move.result)
             else:
                 work_with_condition(type_work='new_condition', new_condition='emotions_from place', new_datas=0)
 
-        else:
-            pass
+        else:  # add random emotions
+            num_move = all_data_condition[1]
+            result_pos = self.work_emotion(int(num_move))
+            if result_pos is not None:
+                work_with_condition(type_work='new_condition', new_condition='emotions_from place', new_datas=num_move + 1)
+                self.write_new_data(result_pos)
+            else:
+                work_with_condition(type_work='new_condition', new_condition='choice_place', new_datas=None)
 
     def write_new_data(self, new_pos):
         self.recording_new_pos.new_pos_miki(new_pos)
+
+    def work_emotion(self, num_move):
+        emotion_move = self.all_const.DSK_EMOTIONS[1]
+        if num_move > len(emotion_move) - 1:
+            return None
+        mechanic_move = DOG.move_dog.MECHANIC_MOVE(type_move='emotion', need_pos=emotion_move[num_move])
+        return mechanic_move.get_result_pos()

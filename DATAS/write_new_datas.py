@@ -19,6 +19,9 @@ def new_num_location(num):
 
 def new_condition(condition, new_data):
     file = open('DATAS/DATAS_DOGS/INF_CONDITION', 'w')
-    new_str = f'{condition} {new_data}'
+    if ')' in str(new_data):
+        new_str = f'{condition}@{new_data[0]} {new_data[1]}'
+    else:
+        new_str = f'{condition}@{new_data}'
     print(new_str, file=file)
     file.close()

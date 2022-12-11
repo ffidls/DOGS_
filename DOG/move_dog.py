@@ -2,6 +2,14 @@ import DOG.description_dogs
 import DATAS.const
 
 
+def sorter_emotion(type_emotion, pos):
+    if type_emotion == '0':
+        return pos
+    elif type_emotion == '+':
+        return pos + 4
+    return pos - 4
+
+
 class MECHANIC_MOVE:
     def __init__(self, type_move, need_pos):
         self.miki = DOG.description_dogs.DOG()
@@ -11,10 +19,12 @@ class MECHANIC_MOVE:
         self.y_dog, self.x_dog = pos_dog[0], pos_dog[1]
         self.y_need, self.x_need = need_pos[0], need_pos[1]
 
-        missing_pos = self.missing_pos_zona() if type_move == 'zona' else self.missing_pos_place()
-        self.missing_pos = missing_pos
-
-        self.result = self.final_choice()
+        if type_move == 'zona':
+            self.result = self.missing_pos_zona()
+        elif type_move == 'place':
+            self.result = self.missing_pos_place()
+        else:
+            self.result = self.move_emotion()
 
     def missing_pos_zona(self):
         size_zona = DATAS.const.SIZE_ZONE
@@ -29,25 +39,30 @@ class MECHANIC_MOVE:
         else:
             missing_y = self.y_dog - (self.y_need + size_zona)
 
-        return missing_y, missing_x
+        return self.final_choice((missing_y, missing_x))
 
     def missing_pos_place(self):
         if self.x_dog == self.x_need and self.y_dog == self.y_need:
-            return 0, 0
+            return None
 
         missing_x = self.x_dog - self.x_need if self.x_dog >= self.x_need else self.x_need - self.x_dog
         missing_y = self.y_dog - self.y_need if self.y_dog >= self.y_need else self.y_need - self.y_dog
-        return missing_y, missing_x
+        return self.final_choice((missing_y, missing_x))
 
-    def final_choice(self):
-        if self.missing_pos == (0, 0):
+    def move_emotion(self):
+        new_y = sorter_emotion(self.y_dog, self.y_need)
+        new_x = sorter_emotion(self.x_dog, self.x_need)
+        return new_y, new_x
+
+    def final_choice(self, missing_pos):
+        if missing_pos == (0, 0):
             return None
 
-        if abs(self.missing_pos[0]) >= abs(self.missing_pos[1]):
-            result = (self.y_dog - self.speed, self.x_dog) if self.missing_pos[0] >= 0 \
+        if abs(missing_pos[0]) >= abs(missing_pos[1]):
+            result = (self.y_dog - self.speed, self.x_dog) if missing_pos[0] >= 0 \
                 else (self.y_dog + self.speed, self.x_dog)
         else:
-            result = (self.y_dog, self.x_dog - self.speed) if self.missing_pos[1] >= 0 \
+            result = (self.y_dog, self.x_dog - self.speed) if missing_pos[1] >= 0 \
                 else (self.y_dog, self.x_dog + self.speed)
         return result
 
