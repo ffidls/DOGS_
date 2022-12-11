@@ -15,3 +15,10 @@ def new_num_location(num):
     file = open('DATAS/DATAS_LOCATIONS/count_now_location', 'w')
     print(num, file=file)
     file.close()
+
+
+def new_condition(condition, new_data):
+    file = open('DATAS/DATAS_DOGS/INF_CONDITION', 'w')
+    new_str = f'{condition} {new_data}'
+    print(new_str, file=file)
+    file.close()

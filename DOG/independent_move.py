@@ -1,7 +1,16 @@
 import pygame
 import random
+import DATAS.write_new_datas, DATAS.get_datas
+import MECHANICA.Change_locations
 
 
+def work_with_condition(type_work, new_condition=None, new_datas=None):
+    if type_work == 'get_condition':
+        return DATAS.get_datas.get_condition_dog()
+    else:
+        DATAS.write_new_datas.new_condition(new_condition, new_datas)
+
+ 
 def checking_contact(entity_object, entity_dog):
     return pygame.Rect.colliderect(entity_dog, entity_object)
 
@@ -28,12 +37,21 @@ class INDEPENDENCE_MOVE:
         self.all_condition = ['choice_place', 'search_place', 'emotions_from place']
 
     def get_pos_places(self, entity_dog):
-        general_pos, private_pos = MECHANICA.Change_locations.get_special_place()
+        '''general_pos, private_pos = MECHANICA.Change_locations.get_special_place()
         radius = self.all_const.RADIUS_PLACE
 
         find_pos = find_contact_place(general_pos, entity_dog, radius)
         if find_pos is None and private_pos is not None:
             find_pos = find_contact_place(private_pos, entity_dog, radius)
 
-        return find_pos
+        return find_pos'''
+        pass
+
+    def sorting_condition(self):
+        now_condition = work_with_condition('get_condition')
+
+        if now_condition == 'choice_place':
+            all_place = MECHANICA.Change_locations.get_special_place()
+            next_place_dog = choice_place(all_place)
+            work_with_condition(type_work='new_condition', new_condition='search_place', new_datas=next_place_dog)
 

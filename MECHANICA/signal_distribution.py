@@ -12,10 +12,10 @@ class USERS_SIGNAL:
     def give_signals(self, signal, absence=False):
         all_sides = ['left', 'right', 'up', 'down']
 
-        if absence:
+        if not absence:
             self.sides(signal) if signal in all_sides else self.mouse(signal)
         else:
-            self.free_move()
+            self.free_parts()
 
     def sides(self, signal):
         self.annas_pos.setting_movement(signal)
@@ -25,5 +25,5 @@ class USERS_SIGNAL:
     def mouse(self, pos):  # for button
         self.dialog.for_dialogs(pos)
 
-    def free_move(self):
+    def free_parts(self):
         DOG.independent_move.INDEPENDENCE_MOVE()

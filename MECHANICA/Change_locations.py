@@ -26,9 +26,8 @@ def get_datas_location(type_depth):
 
 
 def get_special_place():
-    general_pos = DATAS.const.GENERAL_PLACE
     private_place = get_datas_location('fail').private_place()
-    return general_pos, private_place
+    return private_place
 
 
 class LOCATIONS:

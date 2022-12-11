@@ -15,7 +15,7 @@ def get_all_inf():
 
 
 def private_place():
-    return None
+    return [(17, 394), (272, 457), (494, 494)]
 
 
 class LOCATION:  # 2 LOCATION

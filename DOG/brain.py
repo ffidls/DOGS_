@@ -3,9 +3,9 @@ import PEOPLE.ANNA
 import DATAS.const
 import DOG.description_dogs
 import DATAS.possions
-import MECHANICA.Change_locations
 import DOG.move_dog
 import DATAS.possions
+import DOG.independent_move
 
 
 def checking_contact(entity_object, entity_dog):
@@ -54,6 +54,7 @@ class MOVE:
 
     def write_new_data(self, pos):
         self.recording_new_pos.new_pos_miki(pos)
+        DOG.independent_move.work_with_condition(type_work='new_condition', new_condition='choice_place')
 
     def create_entity_zona(self):
         size_zona = self.all_const.SIZE_ZONE
