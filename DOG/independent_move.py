@@ -66,8 +66,9 @@ class INDEPENDENCE_MOVE:
         elif now_condition == 'search_place':
             find_place_pos = all_data_condition[1].split()
             mechanic_move = DOG.move_dog.MECHANIC_MOVE(type_move='place',
-                                                       need_pos=(int(find_place_pos[0]), int(find_place_pos[1])))
+                                                       need_pos=(int(find_place_pos[1]), int(find_place_pos[0])))
             new_pos = mechanic_move.result
+
             if new_pos is not None:
                 self.write_new_data(mechanic_move.result)
             else:
@@ -77,7 +78,8 @@ class INDEPENDENCE_MOVE:
             num_move = all_data_condition[1]
             result_pos = self.work_emotion(int(num_move))
             if result_pos is not None:
-                work_with_condition(type_work='new_condition', new_condition='emotions_from place', new_datas=num_move + 1)
+                work_with_condition(type_work='new_condition', new_condition='emotions_from place',
+                                    new_datas=int(num_move) + 1)
                 self.write_new_data(result_pos)
             else:
                 work_with_condition(type_work='new_condition', new_condition='choice_place', new_datas=None)

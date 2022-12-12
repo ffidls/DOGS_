@@ -1,13 +1,18 @@
 import DOG.description_dogs
 import DATAS.const
+import pygame
 
 
 def sorter_emotion(type_emotion, pos):
     if type_emotion == '0':
         return pos
     elif type_emotion == '+':
-        return pos + 4
-    return pos - 4
+        return pos + 8
+    return pos - 8
+
+
+def checking_contact(entity_object, entity_dog):
+    return pygame.Rect.colliderect(entity_dog, entity_object)
 
 
 class MECHANIC_MOVE:
@@ -42,28 +47,37 @@ class MECHANIC_MOVE:
         return self.final_choice((missing_y, missing_x))
 
     def missing_pos_place(self):
-        if self.x_dog == self.x_need and self.y_dog == self.y_need:
+        radius = DATAS.const.RADIUS_FIND_PLACE
+        entity_place = pygame.Rect((self.y_need, self.x_need, radius, radius))
+        entity_dog = self.miki.entity()
+
+        if checking_contact(entity_place, entity_dog):
             return None
 
-        missing_x = self.x_dog - self.x_need if self.x_dog >= self.x_need else self.x_need - self.x_dog
-        missing_y = self.y_dog - self.y_need if self.y_dog >= self.y_need else self.y_need - self.y_dog
-        return self.final_choice((missing_y, missing_x))
+        missing_y = self.y_need - self.y_dog if self.y_need > self.y_dog else self.y_dog - self.y_need
+        missing_x = self.x_need - self.x_dog if self.x_need > self.x_dog else self.x_dog - self.x_need
+
+        speed = DATAS.const.SPEED_DOG
+        if abs(missing_x) > abs(missing_y):
+            pos = self.y_dog, self.x_dog - speed if self.x_dog > self.x_need else self.x_dog + speed
+        else:
+            pos = self.y_dog - speed if self.y_dog > self.y_need else self.y_dog + speed, self.x_dog
+
+        return pos
 
     def move_emotion(self):
-        new_y = sorter_emotion(self.y_dog, self.y_need)
-        new_x = sorter_emotion(self.x_dog, self.x_need)
+        new_y = sorter_emotion(self.y_need, self.y_dog)
+        new_x = sorter_emotion(self.x_need, self.x_dog)
         return new_y, new_x
 
     def final_choice(self, missing_pos):
-        if missing_pos == (0, 0):
-            return None
-
+        speed = DATAS.const.SPEED_DOG
         if abs(missing_pos[0]) >= abs(missing_pos[1]):
-            result = (self.y_dog - self.speed, self.x_dog) if missing_pos[0] >= 0 \
-                else (self.y_dog + self.speed, self.x_dog)
+            result = (self.y_dog - speed, self.x_dog) if missing_pos[0] >= 0 \
+                else (self.y_dog + speed, self.x_dog)
         else:
-            result = (self.y_dog, self.x_dog - self.speed) if missing_pos[1] >= 0 \
-                else (self.y_dog, self.x_dog + self.speed)
+            result = (self.y_dog, self.x_dog - speed) if missing_pos[1] >= 0 \
+                else (self.y_dog, self.x_dog + speed)
         return result
 
     def get_result_pos(self):
