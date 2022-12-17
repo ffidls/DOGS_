@@ -22,5 +22,5 @@ class MOVING:
         pass
 
     def get_result(self, new_pos):
-        checking = MECHANICA.check_moving.CHECKING(new_pos)
+        checking = MECHANICA.check_moving.CHECKING(pos_user=new_pos, type_checking='people')
         return new_pos if checking.result() else None

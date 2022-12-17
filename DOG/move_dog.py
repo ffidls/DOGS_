@@ -1,6 +1,7 @@
 import DOG.description_dogs
 import DATAS.const
 import pygame
+import MECHANICA.check_moving
 
 
 def sorter_emotion(type_emotion, pos):
@@ -13,6 +14,11 @@ def sorter_emotion(type_emotion, pos):
 
 def checking_contact(entity_object, entity_dog):
     return pygame.Rect.colliderect(entity_dog, entity_object)
+
+
+def check_new_pos(possible_pos):
+    mechanica_check = MECHANICA.check_moving.CHECKING((possible_pos[1], possible_pos[0]), 'dog')
+    return mechanica_check.result()
 
 
 class MECHANIC_MOVE:
@@ -50,6 +56,7 @@ class MECHANIC_MOVE:
         radius = DATAS.const.RADIUS_FIND_PLACE
         entity_place = pygame.Rect((self.y_need, self.x_need, radius, radius))
         entity_dog = self.miki.entity()
+        speed = DATAS.const.SPEED_DOG
 
         if checking_contact(entity_place, entity_dog):
             return None
@@ -57,11 +64,17 @@ class MECHANIC_MOVE:
         missing_y = self.y_need - self.y_dog if self.y_need > self.y_dog else self.y_dog - self.y_need
         missing_x = self.x_need - self.x_dog if self.x_need > self.x_dog else self.x_dog - self.x_need
 
-        speed = DATAS.const.SPEED_DOG
-        if abs(missing_x) > abs(missing_y):
-            pos = self.y_dog, self.x_dog - speed if self.x_dog > self.x_need else self.x_dog + speed
+        first_var = self.y_dog, self.x_dog - speed if self.x_dog > self.x_need else self.x_dog + speed
+        second_var = self.y_dog - speed if self.y_dog > self.y_need else self.y_dog + speed, self.x_dog
+
+        if abs(missing_x) - abs(missing_y) == 3 or abs(missing_y) - abs(missing_x) == 3:
+            pos = self.y_dog - speed if self.y_dog > self.y_need else self.y_dog + speed, \
+                  self.x_dog - speed if self.x_dog > self.x_need else self.x_dog + speed
+
+        elif abs(missing_x) > abs(missing_y):
+            pos = first_var if check_new_pos(first_var) else second_var
         else:
-            pos = self.y_dog - speed if self.y_dog > self.y_need else self.y_dog + speed, self.x_dog
+            pos = second_var if check_new_pos(second_var) else first_var
 
         return pos
 
