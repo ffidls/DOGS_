@@ -1,10 +1,10 @@
 import pygame, sys
 from pygame.locals import *
-import DRAW.all_drawing
-import MECHANICA.signal_distribution
-import DATAS
+import FIRST_PART.DRAW.all_drawing
+import FIRST_PART.MECHANICA.signal_distribution
+import FIRST_PART.DATAS
 
-all_const = DATAS.const
+all_const = FIRST_PART.DATAS.const
 
 
 def main():
@@ -15,8 +15,8 @@ def main():
     ####################
     SCREEN = pygame.display.set_mode((all_const.WIDTH, all_const.HEIGHT), 0, 32)
 
-    draw_game = DRAW.all_drawing.DRAW_MOVING_AND_FON(SCREEN)
-    accept_signals_user = MECHANICA.signal_distribution.USERS_SIGNAL()
+    draw_game = FIRST_PART.DRAW.all_drawing.DRAW_MOVING_AND_FON(SCREEN)
+    accept_signals_user = FIRST_PART.MECHANICA.signal_distribution.USERS_SIGNAL()
     ###################
 
     while True:
