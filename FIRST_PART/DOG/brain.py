@@ -25,7 +25,7 @@ def get_pos_zona(side):  # !!!
     else:
         start_pos_zona = (y - size_zon // 2 + 75, x - size_zon // 2 + 17)
 
-    DATAS.possions.new_pos_zona(start_pos_zona)
+    FIRST_PART.DATAS.possions.new_pos_zona(start_pos_zona)
     return start_pos_zona
 
 
@@ -46,7 +46,7 @@ class MOVE:
             type_move = 'zona'
             need_pos = pos_zona
 
-            move_dog = DOG.move_dog.MECHANIC_MOVE(type_move, need_pos)
+            move_dog = FIRST_PART.DOG.move_dog.MECHANIC_MOVE(type_move, need_pos)
             self.write_new_data(move_dog.get_result_pos())
 
         # DATAS.possions.new_pos_zona(get_pos_zona(self.side))
@@ -54,7 +54,7 @@ class MOVE:
 
     def write_new_data(self, pos):
         self.recording_new_pos.new_pos_miki(pos)
-        DOG.independent_move.work_with_condition(type_work='new_condition', new_condition='choice_place')
+        FIRST_PART.DOG.independent_move.work_with_condition(type_work='new_condition', new_condition='choice_place')
 
     def create_entity_zona(self):
         size_zona = self.all_const.SIZE_ZONE

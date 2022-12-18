@@ -38,7 +38,7 @@ class MECHANIC_MOVE:
             self.result = self.move_emotion()
 
     def missing_pos_zona(self):
-        size_zona = DATAS.const.SIZE_ZONE
+        size_zona = FIRST_PART.DATAS.const.SIZE_ZONE
 
         if self.x_dog < self.x_need:
             missing_x = self.x_dog - self.x_need
