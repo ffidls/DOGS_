@@ -74,7 +74,7 @@ class INDEPENDENCE_MOVE:
             else:
                 work_with_condition(type_work='new_condition', new_condition='emotions_from place', new_datas=0)
 
-        else:  # add random emotions
+        else:  # add random emotions //// emotions_from place
             num_move = all_data_condition[1]
             result_pos = self.work_emotion(int(num_move))
             if result_pos is not None:

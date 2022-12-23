@@ -1,9 +1,9 @@
-FPS = 60
+FPS = 35
 SIZE = 21 * 30, 10 * 30
 HEIGHT = 512
 WIDTH = 512
 
-SPEED = 3
+SPEED = 5
 
 BORDERS = 50
 

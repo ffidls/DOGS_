@@ -7,6 +7,10 @@ def get_count_location():
     return int(datas)
 
 
+def get_img_anna(count_sprite, type_move):
+    return f"FIRST_PART/DATAS/DATA_ANNA/{type_move[:len(type_move) - 1]}_anna/{count_sprite}.png"
+
+
 def window_dialog():
     return 'FIRST_PART/DATAS/DATAS_CONTACT/dialog_window.png'
 
@@ -42,6 +46,16 @@ def get_condition_dog():
 def get_data_dialog():
     file = open('FIRST_PART/DATAS/INF_DIALOG', 'r').read().split()
     return file[0], file[1]
+
+
+def get_count_sprite_anna():
+    datas = open('FIRST_PART/DATAS/DATA_ANNA/count_sprite', 'r').read()
+    return int(datas)
+
+
+def get_condition_anna():
+    datas = open('FIRST_PART/DATAS/DATA_ANNA/condition_anna', 'r').read()
+    return datas
 
 
 class DATAS:

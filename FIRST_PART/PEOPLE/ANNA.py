@@ -1,6 +1,11 @@
+import pygame
+
 import FIRST_PART.DATAS.possions
 import FIRST_PART.MECHANICA.moving, FIRST_PART.MECHANICA.Change_locations
 import FIRST_PART.DATAS.const
+import FIRST_PART.DATAS.get_datas
+import FIRST_PART.DATAS.write_new_datas
+import FIRST_PART.MECHANICA.control_all_condition
 
 
 class Anna:
@@ -33,4 +38,29 @@ class Anna:
 
     def new_pos_for_new_location(self, old_pos):
         return self.check_for_another_location.check_border(old_pos)
+
+
+class setting_entity(pygame.sprite.Sprite):
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+
+        self.data = FIRST_PART.DATAS.get_datas
+        self.new_data = FIRST_PART.DATAS.write_new_datas
+        pos, sprite = self.get_pos(), self.get_image()
+
+        self.image = pygame.image.load(sprite).convert_alpha()
+        self.rect = self.image.get_rect(center=(pos[1], pos[0]))
+
+    def get_image(self):
+        last_count_sprite = self.data.get_count_sprite_anna()
+        type_condition = FIRST_PART.MECHANICA.control_all_condition.get_condition()
+
+        limit_sprite = 17 if type_condition == 'move\n' else 23
+        count_sprite = last_count_sprite + 1 if last_count_sprite <= limit_sprite else 1
+
+        self.new_data.new_count_sprite_anna(count_sprite)
+        return self.data.get_img_anna(count_sprite, type_condition)
+
+    def get_pos(self):
+        return FIRST_PART.DATAS.possions.give_pos_anna()
 
