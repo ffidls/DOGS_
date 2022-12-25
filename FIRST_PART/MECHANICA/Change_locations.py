@@ -15,8 +15,10 @@ def get_datas_location(type_depth):
         user_location = FIRST_PART.DATAS.DATAS_LOCATIONS.location1.description_location
     elif num == 2:
         user_location = FIRST_PART.DATAS.DATAS_LOCATIONS.location2.description_location
-    else:
+    elif num == 3:
         user_location = FIRST_PART.DATAS.DATAS_LOCATIONS.location3.description_location
+    else:
+        user_location = FIRST_PART.DATAS.DATAS_LOCATIONS.location4.description_location
     # else user_location = location3
 
     if type_depth == 'class':

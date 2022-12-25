@@ -7,6 +7,11 @@ def get_count_location():
     return int(datas)
 
 
+def get_side_user():
+    datas = open('FIRST_PART/DATAS/DATA_ANNA/side_move', 'r').read()
+    return datas
+
+
 def get_img_anna(count_sprite, type_move):
     return f"FIRST_PART/DATAS/DATA_ANNA/{type_move[:len(type_move) - 1]}_anna/{count_sprite}.png"
 

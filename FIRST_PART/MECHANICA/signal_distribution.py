@@ -23,7 +23,7 @@ class USERS_SIGNAL:
         self.annas_pos.setting_movement(signal)
         self.buttons.find_contact_buttons(self.annas_pos.entity_anna())
         FIRST_PART.DOG.brain.MOVE(signal)
-        self.work_condition.write_new_condition(type_condition='run')
+        self.work_condition.write_new_condition(type_condition='run', signal=signal)
 
     def mouse(self, pos):  # for button
         self.dialog.for_dialogs(pos)

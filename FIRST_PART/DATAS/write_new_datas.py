@@ -4,6 +4,12 @@ def new_condition_anna(condition):
     file.close()
 
 
+def new_side_user(side):
+    file = open('FIRST_PART/DATAS/DATA_ANNA/side_move', 'w')
+    print(side, file=file)
+    file.close()
+
+
 def new_inf_for_button(pos, name_house):
     file = open('FIRST_PART/DATAS/INF_BUTTONS', 'w')
     str_inf = f'True {pos[0]} {pos[1]} {name_house}' if pos is not None else 'False -1 -1 None'

@@ -40,13 +40,17 @@ class Anna:
         return self.check_for_another_location.check_border(old_pos)
 
 
+def get_pos():
+    return FIRST_PART.DATAS.possions.give_pos_anna()
+
+
 class setting_entity(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
 
         self.data = FIRST_PART.DATAS.get_datas
         self.new_data = FIRST_PART.DATAS.write_new_datas
-        pos, sprite = self.get_pos(), self.get_image()
+        pos, sprite = get_pos(), self.get_image()
 
         self.image = pygame.image.load(sprite).convert_alpha()
         self.rect = self.image.get_rect(center=(pos[1], pos[0]))
@@ -60,7 +64,4 @@ class setting_entity(pygame.sprite.Sprite):
 
         self.new_data.new_count_sprite_anna(count_sprite)
         return self.data.get_img_anna(count_sprite, type_condition)
-
-    def get_pos(self):
-        return FIRST_PART.DATAS.possions.give_pos_anna()
 
