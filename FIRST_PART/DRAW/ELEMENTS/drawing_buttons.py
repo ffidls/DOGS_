@@ -20,14 +20,14 @@ def mechanic_text(phrase, SCREEN, pos):
 
 class ASSEMBLING:
     def __init__(self):
-        #self.img_button = pygame.image.load(FIRST_PART.DATAS.get_datas.img_button())
+        self.img_button = pygame.image.load(FIRST_PART.DATAS.get_datas.img_button())
         self.inf_button_dialog = FIRST_PART.DIALOG_BUTTONS.mechanic_contact.SETTING_CONTACT()
 
         self.window_dialog = pygame.image.load(FIRST_PART.DATAS.get_datas.window_dialog())
 
     def draw_button(self, SCREEN):
         pos = self.inf_button_dialog.setting_for_draw_button()
-        #SCREEN.blit(self.img_button, (pos[0], pos[1]))
+        SCREEN.blit(self.img_button, (pos[0], pos[1]))
 
     def draw_dialog(self, SCREEN):
         datas_dialog = self.inf_button_dialog.datas_from_draw_dialog()

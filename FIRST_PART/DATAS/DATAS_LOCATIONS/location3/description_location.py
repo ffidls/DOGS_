@@ -39,6 +39,7 @@ class LOCATION:  # 3 LOCATION
             next_num_location, new_pos_user = 2, (self.new_pos_ago, pos_user[1])
             return next_num_location, new_pos_user
 
-        if pos_user[1] >= self.new_pos_left[0] and pos_user[0] >= 510:
-            pass
+        if pos_user[1] <= 15:
+            next_num_location, new_pos_user = 4, (197, 456)
+            return next_num_location, new_pos_user
         return None, None

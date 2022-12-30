@@ -1,6 +1,7 @@
 import FIRST_PART.DATAS.DATAS_LOCATIONS.location1.description_location
 import FIRST_PART.DATAS.DATAS_LOCATIONS.location2.description_location
 import FIRST_PART.DATAS.DATAS_LOCATIONS.location3.description_location
+import FIRST_PART.DATAS.DATAS_LOCATIONS.location4.description_location
 import FIRST_PART.DATAS.get_datas, FIRST_PART.DATAS.write_new_datas
 import FIRST_PART.DATAS.const
 

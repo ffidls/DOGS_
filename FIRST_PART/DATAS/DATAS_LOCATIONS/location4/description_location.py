@@ -34,8 +34,8 @@ class LOCATION:  # 4 LOCATION
         return entity
 
     def checking_border(self, pos_user):
-        if pos_user[1] >= self.pos_border_ago[0] and pos_user[0] >= self.pos_border_ago[1]:
-            next_num_location, new_pos_user = 2, (self.new_pos_ago, pos_user[1])
+        if pos_user[1] >= 457 and pos_user[0] >= 80:
+            next_num_location, new_pos_user = 3, (260, 55)
             return next_num_location, new_pos_user
 
         return None, None
