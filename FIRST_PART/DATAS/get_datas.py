@@ -7,6 +7,11 @@ def get_count_location():
     return int(datas)
 
 
+def get_dog_location():
+    datas = open('FIRST_PART/DATAS/DATAS_DOGS/count_location', 'r').read()
+    return int(datas)
+
+
 def get_side_user():
     datas = open('FIRST_PART/DATAS/DATA_ANNA/side_move', 'r').read()
     return datas

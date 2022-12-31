@@ -3,11 +3,12 @@ import FIRST_PART.DATAS.const
 
 
 def start_pos_door():
-    return [(55, 366), (277, 87)]
+    return [(53, 87), (366, 82), (23, 363), (345, 357)]
 
 
 def pos_people_house():
-    return {(55, 366): 'neighbor_house', (277, 87): 'neighbor_house'}
+    return {(53, 87): 'alina_house', (366, 82): 'neighbor_house',
+            (23, 363): 'neighbor_house', (345, 357): 'kira_house'}
 
 
 def get_all_inf():
@@ -15,7 +16,7 @@ def get_all_inf():
 
 
 def private_place():
-    return [(466, 31), (27, 159), (29, 288), (460, 473)]
+    return [(245, 62), (143, 262), (297, 360)]
 
 
 class LOCATION:  # 4 LOCATION

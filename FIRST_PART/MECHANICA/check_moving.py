@@ -28,7 +28,7 @@ class CHECKING:
         return self.border() and self.houses()
 
     def border(self):
-        return self.height - self.x > self.borders and self.width - self.y > self.borders and self.y >= self.wall
+        return self.height - self.x >= self.borders and self.width - self.y > self.borders and self.y >= self.wall
 
     def houses(self):  # for locations
         if self.type_object == 'people':

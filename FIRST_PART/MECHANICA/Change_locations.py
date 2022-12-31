@@ -6,12 +6,16 @@ import FIRST_PART.DATAS.get_datas, FIRST_PART.DATAS.write_new_datas
 import FIRST_PART.DATAS.const
 
 
-def get_count_location():
-    return FIRST_PART.DATAS.get_datas.get_count_location()
+def get_count_location(entity):
+    if entity == 'user':
+        count = FIRST_PART.DATAS.get_datas.get_count_location()
+    else:
+        count = FIRST_PART.DATAS.get_datas.get_dog_location()
+    return count
 
 
-def get_datas_location(type_depth):
-    num = get_count_location()
+def get_datas_location(type_depth, object='user'):
+    num = get_count_location('user') if object == 'user' else get_count_location('dog')
     if num == 1:
         user_location = FIRST_PART.DATAS.DATAS_LOCATIONS.location1.description_location
     elif num == 2:
@@ -39,12 +43,17 @@ class LOCATIONS:
         self.now_location = 1
         self.all_const = FIRST_PART.DATAS.const
 
-    def check_border(self, pos_user):
-        user_location = get_datas_location(type_depth='class')
+    def check_border(self, pos_user, entity_object='user'):
+        user_location = get_datas_location(type_depth='class') if entity_object == 'user' \
+            else get_datas_location(type_depth='class', object='dog')
         num_location, new_pos = user_location.checking_border(pos_user)
 
+        if entity_object =='dog':
+            pass
+
         if num_location is not None:
-            FIRST_PART.DATAS.write_new_datas.new_num_location(num_location)
+            FIRST_PART.DATAS.write_new_datas.new_num_location(num_location) if entity_object == 'user' \
+                else FIRST_PART.DATAS.write_new_datas.new_count_location_dog(num_location)
             return new_pos
 
         return None

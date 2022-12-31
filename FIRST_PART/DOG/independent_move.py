@@ -37,7 +37,7 @@ def choice_place(pos_place):
 
 class INDEPENDENCE_MOVE:
     def __init__(self):
-        self.all_condition = ['choice_place', 'search_place', 'emotions_from place']
+        self.all_condition = ['choice_place', 'search_place', 'emotions_from place', 'no_place']
         self.recording_new_pos = FIRST_PART.DATAS.possions
         self.all_const = FIRST_PART.DATAS.const
 
@@ -57,6 +57,12 @@ class INDEPENDENCE_MOVE:
     def sorting_condition(self):
         all_data_condition = work_with_condition('get_condition')
         now_condition = all_data_condition[0]
+        all_place = FIRST_PART.MECHANICA.Change_locations.get_special_place()
+
+        if all_place[0] is None or now_condition == 'no_place':
+            work_with_condition(type_work='new_condition', new_condition='search_place', new_datas=None)
+            if all_place is not None:
+                now_condition = 'choice_place'
 
         if now_condition == 'choice_place':
             all_place = FIRST_PART.MECHANICA.Change_locations.get_special_place()
