@@ -1,5 +1,5 @@
 import pygame
-import FIRST_PART.PEOPLE.ANNA
+import FIRST_PART.PEOPLE.ANNA, FIRST_PART.PEOPLE.KIRA
 import FIRST_PART.DATAS.get_datas
 
 
@@ -15,5 +15,10 @@ class MOVING_PEOPLE:  # сложность в анимации
 
         screen.blit(img, entity_anna.rect)
 
-    def kira(self):
-        pass
+    def kira(self, screen):
+        pos = FIRST_PART.PEOPLE.KIRA.get_pos()
+        if pos != (0, 0):
+            object_kira = FIRST_PART.PEOPLE.KIRA.setting_entity(pos)
+            img = pygame.transform.flip(object_kira.image, True, False)
+
+            screen.blit(img, object_kira.rect)

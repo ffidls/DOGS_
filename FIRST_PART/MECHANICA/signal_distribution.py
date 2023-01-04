@@ -1,4 +1,4 @@
-import FIRST_PART.PEOPLE.ANNA
+import FIRST_PART.PEOPLE.ANNA, FIRST_PART.PEOPLE.KIRA
 import FIRST_PART.DIALOG_BUTTONS.buttons, FIRST_PART.DIALOG_BUTTONS.mechanic_contact
 import FIRST_PART.DOG.brain, FIRST_PART.DOG.independent_move
 import FIRST_PART.MECHANICA.control_all_condition
@@ -7,6 +7,7 @@ import FIRST_PART.MECHANICA.control_all_condition
 class USERS_SIGNAL:
     def __init__(self):
         self.annas_pos = FIRST_PART.PEOPLE.ANNA.Anna()
+        self.kira = FIRST_PART.PEOPLE.KIRA.KIRA()
         self.buttons = FIRST_PART.DIALOG_BUTTONS.buttons.BUTTONS()
         self.dialog = FIRST_PART.DIALOG_BUTTONS.mechanic_contact.SETTING_CONTACT()
         self.work_condition = FIRST_PART.MECHANICA.control_all_condition.CONTROL()
@@ -18,6 +19,8 @@ class USERS_SIGNAL:
             self.sides(signal) if signal in all_sides else self.mouse(signal)
         else:
             self.free_parts()
+        # self.work_condition.condition_dialogs()
+        # self.kira.setting_move()
 
     def sides(self, signal):
         self.annas_pos.setting_movement(signal)

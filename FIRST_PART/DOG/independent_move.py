@@ -40,7 +40,6 @@ class INDEPENDENCE_MOVE:
         self.all_condition = ['choice_place', 'search_place', 'emotions_from place', 'no_place']
         self.recording_new_pos = FIRST_PART.DATAS.possions
         self.all_const = FIRST_PART.DATAS.const
-
         self.sorting_condition()
 
     def get_pos_places(self, entity_dog):

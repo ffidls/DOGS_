@@ -32,3 +32,14 @@ def new_pos_zona(new_pos):
     print(f'{new_pos[0]} {new_pos[1]}', file=file)
 
     file.close()
+
+
+def new_pos_kira(pos):
+    file = open('FIRST_PART/DATAS/DATA_KIRA/pos_kira')
+    print(f'{pos[0]} {pos[1]}', file=file)
+    file.close()
+
+
+def get_pos_kira():
+    file = open('FIRST_PART/DATAS/DATA_KIRA/pos_kira', 'r').read().split()
+    return int(file[0]), int(file[1])

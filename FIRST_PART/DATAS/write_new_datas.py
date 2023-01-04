@@ -10,6 +10,12 @@ def new_side_user(side):
     file.close()
 
 
+def new_condition_kira(condition):
+    file = open('FIRST_PART/DATAS/DATA_KIRA/condition', 'w')
+    print(condition, file=file)
+    file.close()
+
+
 def new_count_location_dog(count):
     file = open('FIRST_PART/DATAS/DATAS_DOGS/count_location', 'w')
     print(count, file=file)
@@ -45,7 +51,13 @@ def new_condition(condition, new_data):
     file.close()
 
 
-def new_count_sprite_anna(count):
-    file = open('FIRST_PART/DATAS/DATA_ANNA/count_sprite', 'w')
+def new_count_sprite(count, name_people='ANNA'):
+    file = open(f'FIRST_PART/DATAS/DATA_{name_people}/count_sprite', 'w')
     print(count, file=file)
+    file.close()
+
+
+def new_condition_game():
+    file = open(f'FIRST_PART/DATAS/condition_game', 'w')
+    print('end', file=file)
     file.close()

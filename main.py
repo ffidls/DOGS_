@@ -10,7 +10,7 @@ height = 512
 mainSurface = pygame.display.set_mode((width, height), 0, 32)
 pygame.display.set_caption('Keyb moves')
 # background = pygame.image.load('DATAS/location2/location2.png')
-sprite = pygame.image.load('FIRST_PART/DATAS/DATAS_LOCATIONS/location2/location2.png')
+sprite = pygame.image.load('FIRST_PART/DATAS/DATAS_LOCATIONS/location4/location4.png')
 # Place image to the center of mainSurface
 image_pos = (0, 0)
 doMove = False

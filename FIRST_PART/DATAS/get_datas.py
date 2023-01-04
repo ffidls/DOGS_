@@ -17,8 +17,8 @@ def get_side_user():
     return datas
 
 
-def get_img_anna(count_sprite, type_move):
-    return f"FIRST_PART/DATAS/DATA_ANNA/{type_move[:len(type_move) - 1]}_anna/{count_sprite}.png"
+def get_img(count_sprite, type_move, name_people='ANNA'):
+    return f"FIRST_PART/DATAS/DATA_{name_people}/{type_move[:len(type_move) - 1]}_anna/{count_sprite}.png"
 
 
 def window_dialog():
@@ -30,7 +30,7 @@ def img_button():
 
 
 def img_human(name):
-    name_fail = "Anna" if name == 'A' else 'Kira'
+    name_fail = "Anna" if name == 'A' or name == 'А' else 'Kira'
     return f'FIRST_PART/DATAS/DATAS_CONTACT/{name_fail}.png'
 
 
@@ -58,14 +58,24 @@ def get_data_dialog():
     return file[0], file[1]
 
 
-def get_count_sprite_anna():
-    datas = open('FIRST_PART/DATAS/DATA_ANNA/count_sprite', 'r').read()
+def get_count_sprite(name_people='ANNA'):
+    datas = open(f'FIRST_PART/DATAS/DATA_{name_people}/count_sprite', 'r').read()
     return int(datas)
 
 
 def get_condition_anna():
     datas = open('FIRST_PART/DATAS/DATA_ANNA/condition_anna', 'r').read()
     return datas
+
+
+def get_condition_kira():
+    condition = open('FIRST_PART/DATAS/DATA_KIRA/condition', 'r').read()
+    return condition
+
+
+def get_condition_game():
+    condition = open('FIRST_PART/DATAS/condition_game', 'r').read()
+    return condition
 
 
 class DATAS:

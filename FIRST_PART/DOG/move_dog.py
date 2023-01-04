@@ -2,6 +2,7 @@ import FIRST_PART.DOG.description_dogs
 import FIRST_PART.DATAS.const
 import pygame
 import FIRST_PART.MECHANICA.check_moving
+import FIRST_PART.DATAS.possions
 
 
 def sorter_emotion(type_emotion, pos):
@@ -22,12 +23,17 @@ def check_new_pos(possible_pos):
 
 
 class MECHANIC_MOVE:
-    def __init__(self, type_move, need_pos):
+    def __init__(self, type_move, need_pos, entity_object='dog'):
         self.miki = FIRST_PART.DOG.description_dogs.DOG()
         pos_dog = self.miki.pos_miki()
         self.speed = FIRST_PART.DATAS.const.SPEED_DOG
 
-        self.y_dog, self.x_dog = pos_dog[0], pos_dog[1]
+        if entity_object == 'dog':
+            self.y_dog, self.x_dog = pos_dog[0], pos_dog[1]
+        else:
+            pos = FIRST_PART.DATAS.possions.get_pos_kira()
+            self.y_dog, self.x_dog = pos[0], pos[1]
+
         self.y_need, self.x_need = need_pos[0], need_pos[1]
 
         if type_move == 'zona':

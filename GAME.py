@@ -3,8 +3,14 @@ from pygame.locals import *
 import FIRST_PART.DRAW.all_drawing
 import FIRST_PART.MECHANICA.signal_distribution
 import FIRST_PART.DATAS
+import FIRST_PART.DATAS.get_datas
 
 all_const = FIRST_PART.DATAS.const
+
+
+def check_end_part():
+    condition = FIRST_PART.DATAS.get_datas.get_condition_game()
+    return True if condition == 'end' else False
 
 
 def main():
@@ -20,6 +26,9 @@ def main():
     ###################
 
     while True:
+        if check_end_part():
+            break
+
         pygame.time.Clock().tick(all_const.FPS)  # Частота обновления экрана
 
         for event in pygame.event.get():

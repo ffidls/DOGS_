@@ -56,12 +56,12 @@ class setting_entity(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(center=(pos[1], pos[0]))
 
     def get_image(self):
-        last_count_sprite = self.data.get_count_sprite_anna()
+        last_count_sprite = self.data.get_count_sprite()
         type_condition = FIRST_PART.MECHANICA.control_all_condition.get_condition()
 
         limit_sprite = 17 if type_condition == 'move\n' else 23
         count_sprite = last_count_sprite + 1 if last_count_sprite <= limit_sprite else 1
 
-        self.new_data.new_count_sprite_anna(count_sprite)
-        return self.data.get_img_anna(count_sprite, type_condition)
+        self.new_data.new_count_sprite(count_sprite)
+        return self.data.get_img(count_sprite, type_condition)
 
